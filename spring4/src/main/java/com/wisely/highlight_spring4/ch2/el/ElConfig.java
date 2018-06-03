@@ -46,6 +46,8 @@ public class ElConfig {
         return new PropertySourcesPlaceholderConfigurer();
     }
 
+
+
     public void outputResource() {
         try {
             System.out.println(normal);
@@ -57,6 +59,7 @@ public class ElConfig {
             System.out.println(IOUtils.toString(testUrl.getInputStream()));
             System.out.println(bookName);
             System.out.println(environment.getProperty("book.author"));
+            System.out.println(environment.getProperty("path"));
         } catch (Exception e) {
             e.printStackTrace();
         }
