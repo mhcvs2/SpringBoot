@@ -1,11 +1,9 @@
-
 server:
   port: 8761
 
 eureka:
   instance:
-    prefer-ip-address: true
-#    hostname: localhost
+    hostname: localhost
   server:
     enable-self-preservation: false
     eviction-interval-timer-in-ms: 60000
