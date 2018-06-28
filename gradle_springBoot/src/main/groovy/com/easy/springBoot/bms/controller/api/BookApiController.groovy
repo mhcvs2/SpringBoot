@@ -67,3 +67,21 @@ class BookApiController {
         "success"
     }
 }
+
+
+//@Bean
+//public Docket gateApi() {
+//    return new Docket(DocumentationType.SWAGGER_2)
+//            .pathProvider(new BasePathProvider(basePath, documentationPath))
+//            .select()
+//            .apis(RequestHandlerSelectors.any())
+//            .paths(paths())
+//            .build()
+//            .apiInfo(apiInfo());
+//}
+//
+//private Predicate<String> paths() {
+//    return or(
+//            patterns.stream().map(PathSelectors::regex).collect(Collectors.toList())
+//    );
+//}
