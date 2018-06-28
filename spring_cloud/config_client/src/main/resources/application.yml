@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: master
+      profile: dev
+#      uri: http://localhost:8888/
+      discovery:
+        enabled: true
+        service-id: config-server
+  rabbitmq:
+    host: services.gcloud.srcb.com
+    port: 28149
+    username: admin
+    password: cloudpi
+server:
+  port: 8881
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
