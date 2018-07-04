@@ -11,3 +11,6 @@ spring:
   jackson:
     serialization:
       indent_output: true
+  data:
+    rest:
+      base-path: /api

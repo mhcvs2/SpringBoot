@@ -1,13 +1,17 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://services.gcloud.srcb.com:30306/springboot?serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://services.gcloud.srcb.com:30306/todo?serverTimezone=UTC&useSSL=false
     username: root
     password: root.123
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
   jackson:
     serialization:
       indent_output: true
+  data:
+    rest:
+      base-path: /api
+#debug: true
