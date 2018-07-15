@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://services.gcloud.srcb.com:30306/springboot?serverTimezone=UTC&useSSL=false
+    username: root
+    password: root.123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  jackson:
+    serialization:
+      indent_output: true
+  redis:
+    host: services.gcloud.srcb.com
+    port: 31840

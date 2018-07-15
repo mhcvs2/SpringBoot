@@ -1,0 +1,4 @@
+spring:
+  redis:
+    host: services.gcloud.srcb.com
+    port: 31840
