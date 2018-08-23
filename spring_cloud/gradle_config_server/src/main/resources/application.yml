@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://gitlab.gcloud.srcb.com/hongchao.ma/SpringcloudConfig.git
+          search-paths: respo
+          username: hongchao.ma
+          password: qq77aa88
+      label: master
+server:
+  port: 8888
