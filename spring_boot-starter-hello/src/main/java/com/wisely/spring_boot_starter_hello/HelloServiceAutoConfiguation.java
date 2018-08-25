@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(HelloServiceProperties.class)
 @ConditionalOnClass(HelloService.class)
 @ConditionalOnProperty(prefix = "hello", value = "enabled", matchIfMissing = true)
-public class HelloServiceAutoConfiguration {
+public class HelloServiceAutoConfiguation {
 
     @Autowired
     private HelloServiceProperties helloServiceProperties;
@@ -24,5 +24,4 @@ public class HelloServiceAutoConfiguration {
         helloService.setMsg(helloServiceProperties.getMsg());
         return helloService;
     }
-
 }

@@ -1,4 +1,4 @@
-package com.wisely.ch6_5;
+package com.wisely.ch6_5_2;
 
 import com.wisely.spring_boot_starter_hello.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @SpringBootApplication
-public class Ch65Application {
+public class Ch652Application {
 
     @Autowired
     HelloService helloService;
@@ -19,7 +19,7 @@ public class Ch65Application {
         return helloService.sayHello();
     }
 
-    public static void main(String[] args){
-        SpringApplication.run(Ch65Application.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(Ch652Application.class, args);
     }
 }

@@ -1,4 +1,4 @@
-package com.wisely.spring_bootstarterhello;
+package com.wisely.spring_boot_starter_hello;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
