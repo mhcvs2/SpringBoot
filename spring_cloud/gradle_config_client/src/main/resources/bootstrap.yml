@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: test
+      profile: dev
+      uri: http://localhost:9999/
+      username: ceres
+      password: cloudpi123
+      fail-fast: true
+server:
+  port: 8881

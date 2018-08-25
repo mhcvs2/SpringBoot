@@ -9,6 +9,15 @@ spring:
           search-paths: respo
           username: hongchao.ma
           password: qq77aa88
+          basedir: /opt/spinnaker-config-server
       label: master
 server:
-  port: 8888
+  port: 9999
+#
+security:
+  user:
+    name: ceres
+    password: cloudpi123
+encrypt:
+  key: cloudpi?
+
