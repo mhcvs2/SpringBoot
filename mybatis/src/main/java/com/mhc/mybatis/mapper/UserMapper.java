@@ -11,13 +11,13 @@ import java.util.List;
 @Component
 public interface UserMapper {
 
-    @Select("SELECT * FROM T_USER WHERE PHONE = #{phone}")
+    @Select("SELECT * FROM t_user WHERE phone = #{phone}")
     User findUserByPhone(@Param("phone") String phone);
 
-    @Select("SELECT * FROM T_USER")
+    @Select("SELECT * FROM t_user")
     List<User> selectUsers();
 
-    @Insert("INSERT INTO T_USER(NAME, PASSWORD, PHONE) VALUES(#{name}, #{password}, #{phone})")
+    @Insert("INSERT INTO t_user(userName, password, phone) VALUES(#{name}, #{password}, #{phone})")
     int insert(@Param("name") String name, @Param("password") String password, @Param("phone") String phone);
 
 }

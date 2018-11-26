@@ -1,9 +1,12 @@
-package com.mhc.mybatis.model;
+package com.mhc.mybatis2.model;
 
 public class User {
     private Integer userId;
+
     private String userName;
+
     private String password;
+
     private String phone;
 
     public Integer getUserId() {
@@ -19,7 +22,7 @@ public class User {
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.userName = userName == null ? null : userName.trim();
     }
 
     public String getPassword() {
@@ -27,7 +30,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 
     public String getPhone() {
@@ -35,6 +38,6 @@ public class User {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 }
