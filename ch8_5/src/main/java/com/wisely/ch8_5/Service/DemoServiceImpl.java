@@ -37,3 +37,15 @@ public class DemoServiceImpl implements DemoService {
         return p;
     }
 }
+
+//@Caching注解可以让我们在一个方法或者类上同时指定多个Spring Cache相关的注解。其拥有三个属性：cacheable、put和evict，分别用于指定@Cacheable、@CachePut和@CacheEvict。
+//
+//@Caching(cacheable = @Cacheable("users"), evict = { @CacheEvict("cache2"),
+//
+//        @CacheEvict(value = "cache3", allEntries = true) })
+//
+//public User find(Integer id) {
+//
+//        returnnull;
+//
+//        }
