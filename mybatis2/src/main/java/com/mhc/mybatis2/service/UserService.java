@@ -15,4 +15,14 @@ public class UserService {
         return userMapper.insert(user);
     }
 
+    public int addUser2(User user) {
+        User u = new User();
+        u.setPassword(user.getPassword());
+        u.setPhone(user.getPhone());
+        u.setUserName(user.getUserName());
+        userMapper.insertSelective(u);
+        System.out.println(u.getPassword());
+        return u.getUserId();
+    }
+
 }

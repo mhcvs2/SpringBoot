@@ -19,4 +19,9 @@ public class UserController {
         return userService.addUser(user);
     }
 
+    @PostMapping("/add2")
+    public int add2(User user){
+        return userService.addUser2(user);
+    }
+
 }
