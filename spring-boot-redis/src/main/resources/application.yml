@@ -9,6 +9,7 @@ spring:
 redisson:
   address: redis://ali:6379
   password: redis.123
+  releaseTimeout: 15
 
 #  redisson.master-name=mymaster
 #  redisson.password=xxxx

@@ -7,4 +7,5 @@ import java.lang.annotation.*;
 @Documented
 public @interface Action3 {
     String value();
+    int lockTime() default 15;
 }

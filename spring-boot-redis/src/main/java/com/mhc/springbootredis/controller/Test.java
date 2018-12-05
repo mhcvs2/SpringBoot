@@ -1,9 +1,12 @@
 package com.mhc.springbootredis.controller;
 
-import com.mhc.springbootredis.common.lock.RedissLockUtil;
+import com.mhc.springbootredis.common.lock.redisson.RedissonUtil;
+import io.lettuce.core.dynamic.annotation.Param;
+import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,8 +40,22 @@ public class Test {
 
     @GetMapping("/3")
     public void t3(){
-        if(RedissLockUtil.tryLock("haha", 30, 10)){
+        if(RedissonUtil.tryLockByTimeout("haha", 30)){
             System.out.println("lock success");
+        }
+        System.out.println("end");
+    }
+
+    @GetMapping("/4/{id}")
+    public void t4(@PathVariable int id) throws InterruptedException{
+        String key = "a:b:c";
+        RLock lock = RedissonUtil.lockByTimeout(key);
+        try {
+            System.out.println("do something: id " + id);
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println("done");
+        }  finally {
+            lock.unlock();
         }
         System.out.println("end");
     }

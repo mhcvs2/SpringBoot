@@ -1,21 +1,20 @@
 package com.mhc.springbootredis.common.lock;
 
-import org.redisson.api.RLock;
-
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
 
-public interface DistributedLocker {
+public interface DistributedLocker<T extends Lock> {
 
-    RLock lock(String lockKey);
+    T lock(String lockKey);
 
-    RLock lock(String lockKey, int timeout);
+    T lock(String lockKey, int timeout);
 
-    RLock lock(String lockKey, TimeUnit unit, int timeout);
+    T lock(String lockKey, TimeUnit unit, int timeout);
 
     boolean tryLock(String lockKey, TimeUnit unit, int waitTime, int leaseTime);
 
     void unlock(String lockKey);
 
-    void unlock(RLock lock);
+    void unlock(T lock);
 
 }

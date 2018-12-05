@@ -1,11 +1,12 @@
-package com.mhc.springbootredis.common.lock;
+package com.mhc.springbootredis.common.lock.redisson;
 
+import com.mhc.springbootredis.common.lock.DistributedLocker;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 
 import java.util.concurrent.TimeUnit;
 
-public class RedissonDistributedLocker implements DistributedLocker {
+public class RedissonDistributedLocker implements DistributedLocker<RLock> {
 
     private RedissonClient redissonClient;
 

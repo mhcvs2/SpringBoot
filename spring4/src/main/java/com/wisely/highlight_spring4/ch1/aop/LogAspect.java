@@ -121,9 +121,12 @@ public class LogAspect {
         for (Map.Entry entry: map.entrySet()) {
             context.setVariable((String)entry.getKey(), entry.getValue());
         }
+//        map.forEach(context::setVariable);
 
         String key = parser.parseExpression(action.value()).getValue(context, String.class);
         System.out.println(key);
+
+        System.out.println(action.lockTime());
 
         try {
             result = joinPoint.proceed(args);

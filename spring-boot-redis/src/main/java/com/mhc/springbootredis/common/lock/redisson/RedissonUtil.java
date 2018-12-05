@@ -1,14 +1,21 @@
-package com.mhc.springbootredis.common.lock;
+package com.mhc.springbootredis.common.lock.redisson;
 
 import org.redisson.api.RLock;
+import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 
-public class RedissLockUtil {
-    private static DistributedLocker redissLock;
+public class RedissonUtil {
 
-    public static void setLocker(DistributedLocker locker) {
+    private static RedissonDistributedLocker redissLock;
+    private static Integer releaseTimeout;
+
+    public static void setLocker(RedissonDistributedLocker locker) {
         redissLock = locker;
+    }
+
+    public static void setReleaseTimeout(Integer releaseTimeout) {
+        RedissonUtil.releaseTimeout = releaseTimeout;
     }
 
     /**
@@ -39,10 +46,9 @@ public class RedissLockUtil {
     /**
      * 带超时的锁
      * @param lockKey
-     * @param timeout 超时时间   单位：秒
      */
-    public static RLock lock(String lockKey, int timeout) {
-        return redissLock.lock(lockKey, timeout);
+    public static RLock lockByTimeout(String lockKey) {
+        return redissLock.lock(lockKey, releaseTimeout);
     }
 
     /**
@@ -59,11 +65,10 @@ public class RedissLockUtil {
      * 尝试获取锁
      * @param lockKey
      * @param waitTime 最多等待时间
-     * @param leaseTime 上锁后自动释放锁时间
      * @return
      */
-    public static boolean tryLock(String lockKey, int waitTime, int leaseTime) {
-        return redissLock.tryLock(lockKey, TimeUnit.SECONDS, waitTime, leaseTime);
+    public static boolean tryLockByTimeout(String lockKey, int waitTime) {
+        return redissLock.tryLock(lockKey, TimeUnit.SECONDS, waitTime, releaseTimeout);
     }
 
     /**

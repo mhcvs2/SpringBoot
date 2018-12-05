@@ -1,4 +1,4 @@
-package com.mhc.springbootredis.common.lock;
+package com.mhc.springbootredis.common.lock.redisson;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Primary;
 
 @Configuration
 @ConfigurationProperties(prefix = "redisson")
-@ConditionalOnProperty("redisson.password")
+@ConditionalOnProperty("redisson.address")
 @Primary
 public class RedissonProperties {
 
@@ -30,6 +30,8 @@ public class RedissonProperties {
     private String[] sentinelAddresses;
 
     private String masterName;
+
+    private int releaseTimeout = 15;
 
     public int getTimeout() {
         return timeout;
@@ -115,4 +117,11 @@ public class RedissonProperties {
         this.sentinelAddresses = sentinelAddresses;
     }
 
+    public int getReleaseTimeout() {
+        return releaseTimeout;
+    }
+
+    public void setReleaseTimeout(int releaseTimeout) {
+        this.releaseTimeout = releaseTimeout;
+    }
 }
