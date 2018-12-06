@@ -1,6 +1,7 @@
 package com.mhc.springbootredis.common.lock.redisson;
 
 import com.mhc.springbootredis.common.lock.DistributedLocker;
+import com.mhc.springbootredis.common.lock.DistributedLockerUtil;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
@@ -74,6 +75,15 @@ public class RedissonAutoConfiguration {
         locker.setRedissonClient(redissonClient);
         RedissonUtil.setLocker(locker);
         RedissonUtil.setReleaseTimeout(redssionProperties.getReleaseTimeout());
+        return locker;
+    }
+
+    @Bean
+    DistributedLocker distributedLocker2(RedissonClient redissonClient) {
+        RedissonDistributedLocker locker = new RedissonDistributedLocker();
+        locker.setRedissonClient(redissonClient);
+        DistributedLockerUtil.setLocker(locker);
+        DistributedLockerUtil.setReleaseTimeout(redssionProperties.getReleaseTimeout());
         return locker;
     }
 

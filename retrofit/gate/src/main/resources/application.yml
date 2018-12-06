@@ -1,0 +1,10 @@
+server:
+  port: 10013
+
+services:
+  api1:
+    enabled: true
+    baseUrl: http://localhost:10011
+  api2:
+    enabled: true
+    baseUrl: http://localhost:10012

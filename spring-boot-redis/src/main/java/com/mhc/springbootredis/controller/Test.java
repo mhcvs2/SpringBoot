@@ -1,5 +1,6 @@
 package com.mhc.springbootredis.controller;
 
+import com.mhc.springbootredis.common.lock.DistributedLockerUtil;
 import com.mhc.springbootredis.common.lock.redisson.RedissonUtil;
 import io.lettuce.core.dynamic.annotation.Param;
 import org.redisson.api.RLock;
@@ -50,6 +51,20 @@ public class Test {
     public void t4(@PathVariable int id) throws InterruptedException{
         String key = "a:b:c";
         RLock lock = RedissonUtil.lockByTimeout(key);
+        try {
+            System.out.println("do something: id " + id);
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println("done");
+        }  finally {
+            lock.unlock();
+        }
+        System.out.println("end");
+    }
+
+    @GetMapping("/5/{id}")
+    public void t5(@PathVariable int id) throws InterruptedException{
+        String key = "a:b:c";
+        RLock lock = DistributedLockerUtil.lockByTimeout(key);
         try {
             System.out.println("do something: id " + id);
             TimeUnit.SECONDS.sleep(5);
