@@ -2,6 +2,7 @@ package com.mhc.springboot_threadpool.threadpool;
 
 import com.mhc.springboot_threadpool.tasks.ITask;
 import com.mhc.springboot_threadpool.tasks.Task1;
+import com.mhc.springboot_threadpool.tasks.Task2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -67,6 +68,14 @@ public class PoolService {
             cacheMap.put(taskId, taskId);
             Task1 task1 = new Task1(taskId);
             threadPool.execute(task1);
+        }
+    }
+
+    public void addTask2(String taskId) {
+        if(cacheMap.get(taskId) == null ) {
+            cacheMap.put(taskId, taskId);
+            Task2 task2 = new Task2(taskId);
+            threadPool.execute(task2);
         }
     }
 
