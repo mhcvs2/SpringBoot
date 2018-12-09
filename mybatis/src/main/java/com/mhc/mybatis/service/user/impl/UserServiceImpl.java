@@ -7,6 +7,7 @@ import com.mhc.mybatis.model.User;
 import com.mhc.mybatis.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,10 +18,23 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;//这里会报错，但是并不会影响
 
-    @Override
-    public int addUser(User user) {
+    @Transactional
+    public int addUser2(User user) {
+        userMapper.insert(user.getUserName(), user.getPassword(), user.getPhone());
+        if(!user.getUserName().equals("")){
+            throw new IllegalArgumentException("dfsdf");
+        }
+        return 1;
+    }
 
-        return userMapper.insert(user.getUserName(), user.getPassword(), user.getPhone());
+    @Override
+    @Transactional
+    public int addUser(User user) {
+        userMapper.insert(user.getUserName(), user.getPassword(), user.getPhone());
+        if(!user.getUserName().equals("")){
+            throw new IllegalArgumentException("dfsdf");
+        }
+        return 1;
     }
 
     /*
