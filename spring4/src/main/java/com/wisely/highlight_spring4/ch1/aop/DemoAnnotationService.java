@@ -8,4 +8,15 @@ public class DemoAnnotationService {
     public void add(){
         System.out.println("add in DemoAnnotationService");
     }
+
+    @Action2(value="t1")
+    public String t1(String a, int b) {
+        System.out.println(a);
+        return a + Integer.toString(b);
+    }
+
+    @Action3(value = "#book.name + '-' + #book.id")
+    public void t3(Book book){
+        System.out.println(book.name);
+    }
 }

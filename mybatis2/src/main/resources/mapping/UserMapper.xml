@@ -13,9 +13,9 @@
     values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.User" >
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.User" useGeneratedKeys="true" keyProperty="userId">
     insert into t_user2
-    <trim prefix="(" suffix=")" suffixOverrides="," >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null" >
         user_id,
       </if>

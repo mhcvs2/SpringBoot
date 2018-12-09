@@ -1,0 +1,16 @@
+
+spring:
+  redis:
+    database: 0
+    host: ali
+    port: 6379
+    password: redis.123
+
+redisson:
+  address: redis://ali:6379
+  password: redis.123
+  releaseTimeout: 15
+
+#  redisson.master-name=mymaster
+#  redisson.password=xxxx
+#  redisson.sentinel-addresses=10.47.91.83:26379,10.47.91.83:26380,10.47.91.83:26381
