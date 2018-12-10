@@ -19,4 +19,9 @@ public class DemoAnnotationService {
     public void t3(Book book){
         System.out.println(book.name);
     }
+
+    public void t4(){
+        SomeThing someThing = new SomeThing();
+        someThing.doSomeThing();
+    }
 }

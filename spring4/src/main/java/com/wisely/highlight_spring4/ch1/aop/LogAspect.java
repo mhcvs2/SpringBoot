@@ -45,6 +45,7 @@ public class LogAspect {
 
     @Around("testaround()")
     public Object taround(ProceedingJoinPoint joinPoint){
+        System.out.println("Action2-------------------");
         Object result = null;
         CodeSignature codeSignature = (CodeSignature)joinPoint.getStaticPart().getSignature();
         // 参数名

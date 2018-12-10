@@ -31,7 +31,13 @@ public class Main {
         demoAnnotationService.t3(book);
     }
 
+    public static void t4() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AopConfig.class);
+        DemoAnnotationService demoAnnotationService = context.getBean(DemoAnnotationService.class);
+        demoAnnotationService.t4();
+    }
+
     public static void main(String[] args){
-        t3();
+        t4();
     }
 }
