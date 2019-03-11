@@ -26,6 +26,11 @@ public class UserController {
         return userService.addUser2(user);
     }
 
+    @GetMapping("/{id}")
+    public User get(@PathVariable Integer id) {
+        return userService.getUser(id);
+    }
+
     @GetMapping("/1")
     public void test1(HttpServletRequest request) {
         System.out.println("getRemoteUser(): " + request.getRemoteUser());
