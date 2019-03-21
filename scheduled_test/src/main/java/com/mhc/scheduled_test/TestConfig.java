@@ -1,5 +1,6 @@
 package com.mhc.scheduled_test;
 
+import com.mhc.scheduled_test.triggers.MyCronTrigger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
@@ -8,8 +9,9 @@ import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
-@Configuration
+//@Configuration
 public class TestConfig implements SchedulingConfigurer {
 
     @Autowired
@@ -34,17 +36,48 @@ public class TestConfig implements SchedulingConfigurer {
 //        );
 //    }
 
+//    @Override
+//    public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
+//        TestTask1 task1 = new TestTask1("task1");
+//        scheduledTaskRegistrar.addTriggerTask(
+//                task1,
+//                triggerContext -> new CronTrigger(scheduleConfig.getCron()).nextExecutionTime(triggerContext)
+//        );
+//        TestTask1 task2 = new TestTask1("task2");
+//        scheduledTaskRegistrar.addTriggerTask(
+//                task2,
+//                triggerContext -> new CronTrigger(scheduleConfig.getCron()).nextExecutionTime(triggerContext)
+//        );
+//    }
+
+//    @Override
+//    public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
+//        TestTask1 task1 = new TestTask1("task1");
+//        scheduledTaskRegistrar.addTriggerTask(
+//                task1,
+//                triggerContext -> {
+//                    Date next = new CronTrigger(scheduleConfig.getCron()).nextExecutionTime(triggerContext);
+//                    System.out.println(next.toString());
+//                    return next;
+//                }
+//        );
+//    }
+
+//    @Override
+//    public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
+//        TestTask1 task1 = new TestTask1("task1");
+//        scheduledTaskRegistrar.addTriggerTask(
+//                task1,
+//                new CronTrigger(scheduleConfig.getCron())
+//        );
+//    }
+
     @Override
     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
         TestTask1 task1 = new TestTask1("task1");
         scheduledTaskRegistrar.addTriggerTask(
                 task1,
-                triggerContext -> new CronTrigger(scheduleConfig.getCron()).nextExecutionTime(triggerContext)
-        );
-        TestTask1 task2 = new TestTask1("task2");
-        scheduledTaskRegistrar.addTriggerTask(
-                task2,
-                triggerContext -> new CronTrigger(scheduleConfig.getCron()).nextExecutionTime(triggerContext)
+                new MyCronTrigger(scheduleConfig.getCron())
         );
     }
 

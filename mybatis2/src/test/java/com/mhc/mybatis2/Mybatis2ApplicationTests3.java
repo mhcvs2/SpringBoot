@@ -33,6 +33,8 @@ public class Mybatis2ApplicationTests3 {
     @Autowired
     UserService userService;
 
+    private UserMapper userMapper;
+
     @Test
 //    @Ignore
     public void testOne() throws Exception {
@@ -78,27 +80,27 @@ public class Mybatis2ApplicationTests3 {
 //        EasyMock.verify(userMapper);
 //    }
 
-//    @Test
-//    public void test2() throws Exception {
-//        User user = new User();
-//        user.setUserName("test");
-//        user.setPhone("123");
-//        user.setPassword("321");
-//        user.setUserId(1);
-////        List<User> users = new ArrayList<>();
-////        users.add(user);
-//        UserService userService1 = EasyMock.createMock(UserService.class);
-////        EasyMock.expect(userMapper.selectByExample(EasyMock.isA(UserExample.class))).andReturn(users);
-//        EasyMock.expect(userService1.getUser(EasyMock.anyObject())).andReturn(user);
-//        PowerMock.expectNew(UserService.class).andReturn(userService1);
-//        EasyMock.replay(userService1);
-//
-//        User user2 = userService.getUser(123);
-//        System.out.println(user2.toString());
-//
-//        EasyMock.verify(userService1);
-//
-//    }
+    @Test
+    public void test2() throws Exception {
+        User user = new User();
+        user.setUserName("test");
+        user.setPhone("123");
+        user.setPassword("321");
+        user.setUserId(1);
+        List<User> users = new ArrayList<>();
+        users.add(user);
+        userMapper = EasyMock.createMock(UserMapper.class);
+        EasyMock.expect(userMapper.selectByExample(EasyMock.isA(UserExample.class))).andReturn(users);
+
+        userService.setUserMapper(userMapper);
+        EasyMock.replay(userMapper);
+
+        User user2 = userService.getUser(123);
+        System.out.println(user2.toString());
+
+        EasyMock.verify(userMapper);
+
+    }
 
 
 

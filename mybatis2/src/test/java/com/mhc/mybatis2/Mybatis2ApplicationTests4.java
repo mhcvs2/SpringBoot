@@ -62,5 +62,17 @@ public class Mybatis2ApplicationTests4 {
 
     }
 
+    @Test
+    public void test3() throws Exception {
+        User user = new User();
+        user.setUserName("test");
+        user.setPhone("123");
+        user.setPassword("321");
+        when(otherService.getUser(anyInt())).thenReturn(user);
+
+        User user1 = userService.getUser2(123);
+        System.out.println(user1.toString());
+    }
+
 
 }
