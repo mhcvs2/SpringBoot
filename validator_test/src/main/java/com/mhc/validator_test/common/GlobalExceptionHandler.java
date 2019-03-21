@@ -13,9 +13,14 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
+
+    private static Pattern pattern = Pattern.compile("JSON parse error:(.*?);");
+
 
     /**
      * 用来处理bean validation异常
@@ -67,6 +72,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseBody
     public ResponseParam resolveConvertIntegerException(HttpMessageNotReadableException ex){
-        return new ResponseParam(ResponseCodeEnum.ERROR.getCode(), ex.getMessage());
+        String message = ex.getMessage();
+        if(message != null && !message.equals("")){
+            Matcher m = pattern.matcher(message);
+            if(m.find()){
+                message = m.group(1);
+            }
+        }
+        return new ResponseParam(ResponseCodeEnum.ERROR.getCode(), message);
     }
 }

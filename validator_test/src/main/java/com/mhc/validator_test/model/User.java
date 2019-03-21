@@ -2,6 +2,7 @@ package com.mhc.validator_test.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.mhc.validator_test.json.IntegerDeserialize;
+import com.mhc.validator_test.json.JsonAlias;
 import com.mhc.validator_test.validator.AssertInteger;
 import lombok.Data;
 
@@ -26,6 +27,7 @@ public class User {
     @Min(value = 10, message = "年龄最小为10")
     @Max(value = 100, message = "年龄最大为100")
     @JsonDeserialize(using = IntegerDeserialize.class)
+    @JsonAlias(name = "年龄")
     private Integer age;
 
 //    @Future(message = "出生日期必须是将来的时间")
