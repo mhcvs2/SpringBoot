@@ -2,17 +2,18 @@ package com.mhc.validator_test.json;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.mhc.validator_test.exceptions.ConvertIntegerException;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
 
-public class IntegerDeserialize extends JsonDeserializer<Object> {
+public class IntegerDeserializeOld extends JsonDeserializer<Integer> {
 
     @Override
-    public Object deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
-        System.out.println("new----");
+    public Integer deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+
         try {
             Integer.valueOf(jsonParser.getValueAsString());
         } catch (NumberFormatException e) {

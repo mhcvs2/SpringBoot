@@ -1,0 +1,6 @@
+
+mail:
+  host: ldfsadf
+  port: 123
+  smtp:
+    auth: true

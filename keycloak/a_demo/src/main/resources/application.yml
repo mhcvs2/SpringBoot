@@ -1,0 +1,22 @@
+
+
+keycloak:
+  realm: springboot
+  auth-server-url: http://keycloak.com/auth
+  ssl-required: external
+  resource: product-app
+  bearer-only: true
+  credentials:
+    secret: e17b7d66-7218-47b9-94c0-df77810e6559
+  security-constraints:
+    - authRoles:
+        - user
+      securityCollections:
+        - name: protected
+          patterns:
+            - /*
+  policy-enforcer-config:
+    on-deny-redirect-to: /accessDenied
+
+server:
+  port: 8081
