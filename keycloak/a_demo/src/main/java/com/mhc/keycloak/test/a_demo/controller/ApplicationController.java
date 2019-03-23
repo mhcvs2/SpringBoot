@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApplicationController {
     @RequestMapping(value = "/api/resourcea", method = RequestMethod.GET)
     public String handleResourceA() {
+        System.out.println("11111111111111111111111111111111111111");
         return "Access Granted in my own demo api a";
     }
 
