@@ -3,8 +3,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath(group: 'org.flywaydb', name: 'flyway-gradle-plugin', version: "5.2.4")
-        classpath(group: 'mysql', name: 'mysql-connector-java', version: "8.0.15")
+        classpath(group: 'org.flywaydb', name: 'flyway-gradle-plugin', version: "5.0.1")
+        classpath(group: 'mysql', name: 'mysql-connector-java', version: "8.0.12")
     }
 }
 
@@ -38,13 +38,12 @@ dependencies {
 }
 
 flyway {
-    url = 'jdbc:mysql://10.69.58.218:8099/dts_test?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true'
+    url = 'jdbc:mysql://ali:3306/gft?characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true'
     locations = ['filesystem:migrations']
-    user = 'dts'
-    password = '123456'
-    schemas = ['flyway_schema']
+    user = 'root'
+    password = '123'
     sqlMigrationPrefix = 'V'
     sqlMigrationSeparator = '__'
     driver = 'com.mysql.cj.jdbc.Driver'
-    table = 'flyway_history'
+    table = 'flywayhistory'
 }

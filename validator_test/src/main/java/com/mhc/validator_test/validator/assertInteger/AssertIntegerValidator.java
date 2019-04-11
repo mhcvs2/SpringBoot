@@ -1,4 +1,4 @@
-package com.mhc.validator_test.validator;
+package com.mhc.validator_test.validator.assertInteger;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

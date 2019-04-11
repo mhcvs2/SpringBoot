@@ -11,7 +11,7 @@ import org.springframework.util.StringUtils;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-//@Configuration
+@Configuration
 public class TestConfig implements SchedulingConfigurer {
 
     @Autowired

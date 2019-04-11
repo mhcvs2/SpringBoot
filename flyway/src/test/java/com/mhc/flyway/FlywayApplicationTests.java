@@ -13,8 +13,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class FlywayApplicationTests {
 
-    @Autowired
-    private UserService userService;
+//    @Autowired
+//    private UserService userService;
 
 //    @Before
 //    public void setUp(){

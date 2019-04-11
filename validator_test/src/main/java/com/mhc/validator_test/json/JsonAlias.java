@@ -1,9 +1,5 @@
 package com.mhc.validator_test.json;
 
-import com.mhc.validator_test.validator.AssertIntegerValidator;
-
-import javax.validation.Constraint;
-import javax.validation.Payload;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -14,7 +10,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
 @Documented
-@Constraint(validatedBy = { AssertIntegerValidator.class})
 public @interface JsonAlias {
 
     String name();

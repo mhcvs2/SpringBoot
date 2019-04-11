@@ -11,5 +11,6 @@ public class TestTask1 implements Runnable {
     @Override
     public void run() {
         System.out.println("task name: " + name);
+        System.out.println(System.currentTimeMillis()/1000);
     }
 }

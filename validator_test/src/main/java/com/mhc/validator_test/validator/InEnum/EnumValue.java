@@ -1,4 +1,4 @@
-package com.mhc.validator_test.validator;
+package com.mhc.validator_test.validator.InEnum;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -12,12 +12,16 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
 @Documented
-@Constraint(validatedBy = { AssertIntegerValidator.class})
-public @interface AssertInteger {
+@Constraint(validatedBy = { EnumValueValidator.class})
+public @interface EnumValue {
 
-    String message() default "必须是整数";
+    String message() default "";
 
-    String name();
+    Class<? extends Enum<?>> enumClass();
+
+    String fieldName();
+
+    String friendlyName();
 
     Class<?>[] groups() default { };
 

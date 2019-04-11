@@ -7,7 +7,7 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 @Configuration
 public class CommonConfig {
 
-    @Autowired
-    ScheduledTaskRegistrar scheduledTaskRegistrar;
+//    @Autowired
+//    ScheduledTaskRegistrar scheduledTaskRegistrar;
 
 }

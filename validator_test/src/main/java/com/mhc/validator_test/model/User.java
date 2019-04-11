@@ -1,9 +1,12 @@
 package com.mhc.validator_test.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.mhc.validator_test.enums.ResultCode;
+import com.mhc.validator_test.enums.ResultCode2;
 import com.mhc.validator_test.json.IntegerDeserialize;
 import com.mhc.validator_test.json.JsonAlias;
-import com.mhc.validator_test.validator.AssertInteger;
+import com.mhc.validator_test.validator.InEnum.EnumValue;
+import com.mhc.validator_test.validator.assertInteger.AssertInteger;
 import lombok.Data;
 
 import javax.validation.Valid;
@@ -39,5 +42,8 @@ public class User {
 
     @AssertInteger(name = "haha")
     private String value;
+
+    @EnumValue(enumClass = ResultCode2.class, fieldName = "code", friendlyName = "识别码")
+    private Integer code;
 
 }

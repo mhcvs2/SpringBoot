@@ -1,0 +1,15 @@
+
+spring:
+  flyway:
+    enabled: true
+    url: jdbc:mysql://ali:3306/gft?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    user: root
+    password: 123
+    driver: com.mysql.cj.jdbc.Driver
+    locations: filesystem:migrations
+
+  datasource:
+    url: jdbc:mysql://ali:3306/gft
+    username: root
+    password: 123
+    driver-class-name: com.mysql.cj.jdbc.Driver
