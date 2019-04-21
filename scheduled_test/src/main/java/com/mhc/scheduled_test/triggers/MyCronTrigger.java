@@ -8,6 +8,8 @@ import java.util.TimeZone;
 
 public class MyCronTrigger extends CronTrigger {
 
+    private boolean first = true;
+
     public MyCronTrigger(String expression) {
         super(expression);
     }
@@ -18,6 +20,10 @@ public class MyCronTrigger extends CronTrigger {
 
     @Override
     public Date nextExecutionTime(TriggerContext triggerContext) {
+        if(first) {
+            first = false;
+            return new Date();
+        }
         Date next = super.nextExecutionTime(triggerContext);
         System.out.println("next time is: " + next.toString());
         return next;

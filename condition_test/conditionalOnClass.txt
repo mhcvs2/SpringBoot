@@ -1,0 +1,5 @@
+1.
+@ConditionalOnClass(value = {TestUser1.class, TestConfig1.class})
+classpath 下有类, 及时没用到, 没被实例化
+
+2. @ConditionalOnClass(name = "com.mhc.condition_test.model.TestUser1")

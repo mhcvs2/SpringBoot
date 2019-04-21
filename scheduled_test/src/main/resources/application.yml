@@ -1,4 +1,5 @@
 
-
 scheduled:
-    cron: "0 0/10 * * * ?"
+    cron: "0/10 * * * * ?"
+server:
+    port: 10800
