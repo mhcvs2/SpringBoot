@@ -7,7 +7,7 @@ eureka:
     prefer-ip-address: true
 #    hostname: localhost
   server:
-    enable-self-preservation: false
+    enable-self-preservation: true
     eviction-interval-timer-in-ms: 60000
   client:
     healthcheck:
