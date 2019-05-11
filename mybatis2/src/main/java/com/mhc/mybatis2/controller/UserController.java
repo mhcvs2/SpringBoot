@@ -17,13 +17,18 @@ public class UserController {
     UserService userService;
 
     @PostMapping
-    public int add(User user) {
+    public int add(@RequestBody User user) {
         return userService.addUser(user);
     }
 
     @PostMapping("/add2")
-    public int add2(User user){
+    public int add2(@RequestBody  User user){
         return userService.addUser2(user);
+    }
+
+    @GetMapping("/{id}")
+    public User get(@PathVariable Integer id) {
+        return userService.getUser(id);
     }
 
     @GetMapping("/1")

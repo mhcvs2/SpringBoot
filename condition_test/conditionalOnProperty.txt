@@ -1,0 +1,18 @@
+@ConditionalOnProperty("test1.key1") = @ConditionalOnProperty(key = "test1.key1") = @ConditionalOnProperty(name = "test1.key1")
+= @ConditionalOnProperty(prefix = "test1", name = "key1")
+= @ConditionalOnProperty(prefix = "test1", value = "key1")
+当配置文件中test1.key1值不为空可以注入, 属性必须是基本类型String, int... 不能是map,list
+
+
+@ConditionalOnProperty(value = "test1.key1", havingValue = "haha") = @ConditionalOnProperty(name = "test1.key1", havingValue = "haha")
+= @ConditionalOnProperty(prefix = "test1", name = "key1", havingValue = "hah")
+= @ConditionalOnProperty(prefix = "test1", value = "key1", havingValue = "hah")
+配置文件中的test1.key1的值必须是haha才能注入
+
+
+matchIfMissing = false
+这个key在配置中不存在, 就作为条件失败，不注入
+
+matchIfMissing = true
+这个key在配置中不存在, 就作为条件成功，注入
+配置中这个key的值为空算存在

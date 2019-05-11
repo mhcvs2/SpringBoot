@@ -31,7 +31,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.wisely</groupId>
+            <groupId>com.mhc</groupId>
             <artifactId>spring-boot-starter-hello</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

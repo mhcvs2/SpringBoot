@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:mysql://ali:3306/gft
+    username: root
+    password: 123
+    driver-class-name: com.mysql.jdbc.Driver
+

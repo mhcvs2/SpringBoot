@@ -1,2 +1,3 @@
-
-
+hello:
+  enabled: true
+  msg: ha

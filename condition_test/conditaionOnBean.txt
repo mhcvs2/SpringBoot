@@ -1,0 +1,35 @@
+1.
+@ConditionalOnBean({TestConfig1.class, TestService1.class}) = @ConditionalOnBean(value = {TestConfig1.class, TestService1.class})
+必须两个bean都存在
+
+2.
+@ConditionalOnBean(type = {"com.mhc.condition_test.service.TestService1"})
+存在com.mhc.condition_test.service.TestService1的实例的bean
+
+3.
+@ConditionalOnBean(annotation = {TestAnnotation1.class, TestAnnotation2.class})
+存在一个bean被TestAnnotation1注解 且 存在一个bean被TestAnnotation2注解
+
+4.
+@ConditionalOnBean(name = {"testService1", "testService2"})
+存在名为testService1和testService2的bean
+
+5.
+@ConditionalOnBean(name = {"testService1", "testService2"}, search = SearchStrategy.CURRENT)
+ALL：搜索整个层次结构，@ConditionOnBean中默认是ALL。
+ANCESTORS：搜索所有祖先，但不搜索当前上下文。
+CURRENT：仅搜索当前上下文。
+PARENTS：已过时，搜索所有父母和祖先，但不是当前的上下文（在SpringBoot 2.0中，这个常量将被移除）
+
+猜测: 祖先是指引用此包的包, 当前上下文是指此包
+
+
+6. parameterizedContainer 不知道干啥的
+
+7.
+@ConditionalOnMissingBean(value = TestConfig1.class)
+不存在TestConfig1的bean时
+
+8.
+@ConditionalOnMissingBean(value = TestConfig1.class, ignored = TestConfig1.class)
+ignored为不检查的类型
