@@ -5,14 +5,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Request;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.IOException;
 import java.util.*;
 
 @Component
+@Slf4j
 public class FeignRequestInterceptor implements RequestInterceptor {
 
     @Autowired
@@ -21,12 +25,16 @@ public class FeignRequestInterceptor implements RequestInterceptor {
     @Override
     public void apply(RequestTemplate template) {
         // feign 不支持 GET 方法传 POJO, json body转query
-        if (template.method().equals("GET") && template.body() != null) {
+        Request.Body body = template.requestBody();
+        if (template.method().equals("GET") && body.asBytes() != null) {
             try {
-                JsonNode jsonNode = objectMapper.readTree(template.body());
+                JsonNode jsonNode = objectMapper.readTree(body.asBytes());
                 template.body(Request.Body.empty());
 
                 Map<String, Collection<String>> queries = new HashMap<>();
+                queries.forEach((k, v) -> {
+                    System.out.println("k: " + k + " v: " + v.toString());
+                });
                 buildQuery(jsonNode, "", queries);
                 template.queries(queries);
             } catch (IOException e) {
