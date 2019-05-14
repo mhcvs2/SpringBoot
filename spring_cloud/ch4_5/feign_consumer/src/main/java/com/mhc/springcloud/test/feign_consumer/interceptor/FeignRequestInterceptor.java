@@ -32,9 +32,6 @@ public class FeignRequestInterceptor implements RequestInterceptor {
                 template.body(Request.Body.empty());
 
                 Map<String, Collection<String>> queries = new HashMap<>();
-                queries.forEach((k, v) -> {
-                    System.out.println("k: " + k + " v: " + v.toString());
-                });
                 buildQuery(jsonNode, "", queries);
                 template.queries(queries);
             } catch (IOException e) {
@@ -49,12 +46,8 @@ public class FeignRequestInterceptor implements RequestInterceptor {
             if (jsonNode.isNull()) {
                 return;
             }
-            Collection<String> values = queries.get(path);
-            if (null == values) {
-                values = new ArrayList<>();
-                queries.put(path, values);
-            }
-            values.add(jsonNode.asText());
+            queries.computeIfAbsent(path, it -> new ArrayList<>());
+            queries.get(path).add(jsonNode.asText());
             return;
         }
         if (jsonNode.isArray()) {   // 数组节点

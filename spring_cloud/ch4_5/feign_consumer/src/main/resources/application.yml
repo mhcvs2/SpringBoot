@@ -12,7 +12,7 @@ eureka:
            defaultZone: http://localhost:8761/eureka
 
 feign:
-#  okhttp:
-#    enabled: true
-  httpclient:
+  okhttp:
     enabled: true
+#  httpclient:
+#    enabled: true
