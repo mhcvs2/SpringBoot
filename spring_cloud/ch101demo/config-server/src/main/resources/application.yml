@@ -1,0 +1,19 @@
+server:
+  port: 9090
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/mhcvs/spring-cloud-config.git
+          username: merzhong0501@163.com
+          password: qq77aa88
+          search-paths: ch10-1-demo
+  application:
+    name: mhc-config-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+  instance:
+    prefer-ip-address: true

@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "f8eb9aee-1d25-4a54-89a9-c03cf9a426ef",
+		"name": "ch10-1-demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user-getDefaultUser",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-customs-user",
+						"value": "1234",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9091/getDefaultUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"getDefaultUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zuul-getDefaultUser",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-customs-user",
+						"value": "1234",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:7777/mhc-user-service/getDefaultUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7777",
+					"path": [
+						"mhc-user-service",
+						"getDefaultUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zuul-getContextUserId",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-customs-user",
+						"type": "text",
+						"value": "1234"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:7777/mhc-user-service/getContextUserId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7777",
+					"path": [
+						"mhc-user-service",
+						"getContextUserId"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zuul-getProviderData",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-customs-user",
+						"type": "text",
+						"value": "1234"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:7777/mhc-user-service/getProviderData",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7777",
+					"path": [
+						"mhc-user-service",
+						"getProviderData"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

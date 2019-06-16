@@ -1,0 +1,21 @@
+server:
+  port: 9091
+spring:
+  profiles:
+    active: dev
+  cloud:
+    config:
+      label: master
+      name: mhc-user-service
+      profile: dev
+      discovery:
+        enabled: true
+        service-id: mhc-config-server
+  application:
+    name: mhc-user-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
