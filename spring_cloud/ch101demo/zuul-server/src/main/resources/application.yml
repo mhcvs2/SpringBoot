@@ -15,29 +15,37 @@ feign:
   hystrix:
     enabled: true
 ribbon:
-  ConnectTimeout: 6000
-  ReadTimeout: 6000
+  ConnectTimeout: 6000 #全局请求连接的超时时间, 默认2s
+  ReadTimeout: 6000 # 全局请求的超时时间, 默认5s
   MaxAutoRetries: 0 #对第一次请求的服务的重试次数
   MaxAutoRetriesNextServer: 0 #要重试的下一个服务的最大数量（不包括第一个服务）
-  OkToRetryOnAllOperations: false
+  OkToRetryOnAllOperations: false # 对所有操作请求都重试
 zuul:
+  # 隔离策略: 线程池, 默认线号量
   ribbonIsolationStrategy: THREAD
   threadPool:
     useSeparateThreadPools: true
+    # 使用线程池隔离时，每个线程的前缀
     threadPoolKeyPrefix: zuulgateway
   max:
     host:
+      # 每个路由可用的最大连接数, 默认20
       max-per-route-connections: 200
+      # 目标主机最大连接数, 默认200
       max-total-connections: 500
   host:
+    # 如果使用url路由, 配置以下两个
     socket-timeout-millis: 5000
     connect-timeout-millis: 10000
 hystrix:
   threadpool:
     default:
+      # 全局默认核心线程池大小, 默认10
       coreSize: 20
+      # 全局默认最大线程池大小, 默认10
       maximumSize: 50
       maxQueueSize: -1
+      # 允许修改coreSize，maximumSize, 默认false
       allowMaximumSizeToDivergeFromCoreSize: true
   command:
     default:
@@ -47,4 +55,5 @@ hystrix:
         isolation:
           thread:
             interruptOnTimeout: false
+            # 全局请求连接的超时时间, 默认1s
             timeoutInMilliseconds: 15000

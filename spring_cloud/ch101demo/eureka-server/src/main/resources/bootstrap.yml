@@ -6,9 +6,12 @@ spring:
 eureka:
   client:
     service-url:
+      # 注册中心位置, 高可用要配置多个地址，逗号隔开
       defaultZone: http://127.0.0.1:8761/eureka/
   instance:
     prefer-ip-address: true
   server:
+    # 自我保护
     enable-self-preservation: true
+    # 主动失效检测时间, 默认60s
     eviction-interval-timer-in-ms: 30000

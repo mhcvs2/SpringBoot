@@ -6,7 +6,7 @@ spring:
   cloud:
     config:
       label: master
-      name: mhc-data-service
+      name: common,mhc-data-service
       profile: dev
       discovery:
         enabled: true
