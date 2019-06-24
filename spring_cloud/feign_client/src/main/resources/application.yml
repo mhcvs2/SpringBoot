@@ -1,0 +1,6 @@
+
+
+
+logging:
+     level:
+       com.mhc.springcloud.test.feign_client.service.HelloFeignService: debug

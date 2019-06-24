@@ -16,11 +16,11 @@ public class Ch72Application {
 
     @RequestMapping("/")
     public String index(Model model){
-        Person single = new Person("aa", 11);
+        Person single = new Person("aafhghf", 11);
 
         List<Person> people = new ArrayList<Person>();
-        Person p1 = new Person("xx", 11);
-        Person p2 = new Person("yy", 22);
+        Person p1 = new Person("xxgfhjf", 11);
+        Person p2 = new Person("yygg", 22);
         Person p3 = new Person("zz", 33);
         people.add(p1);
         people.add(p2);
