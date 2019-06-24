@@ -10,4 +10,5 @@ public class TestCondition1 implements Condition {
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
         return true;
     }
+
 }

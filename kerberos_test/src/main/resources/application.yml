@@ -3,12 +3,13 @@
 
 kerberos:
   url: http://10.69.65.242:8011/kerberos/downloadKeytab?tenantid={0}&kdcServerName={1}
-  location: D:\test
-  krb5: "D:\\save\\krb5.conf"
-  hdfsUrl: hdfs://10.69.66.107:8020
+  location: /tmp
+  krb5: "/etc/krb5.conf"
+  hdfsUrl: hdfs://10.0.99.101:8020
   kdcServerName: "test"
   tenant: "1"
   hadoopDir: D:\save\hadoop2.6_Win_x64-master
+  keyPath: /etc/hdfs.headless.keytab
   props:
     - k: hadoop.security.authentication
       v: kerberos

@@ -14,5 +14,6 @@ matchIfMissing = false
 这个key在配置中不存在, 就作为条件失败，不注入
 
 matchIfMissing = true
-这个key在配置中不存在, 就作为条件成功，注入
+这个key在配置中不存在, 也作为条件成功，注入
+也就是说, 存在和不存在, 都注入, 要不注入，只有havingValue值不匹配
 配置中这个key的值为空算存在
