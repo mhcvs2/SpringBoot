@@ -1,0 +1,3140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mhc.mybatis2.mapper.InstanceResourceGroupStatusMapper">
+  <resultMap id="BaseResultMap" type="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="env" jdbcType="INTEGER" property="env" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_id, job_id, service_id, env, status, message
+  </sql>
+  <select id="selectByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample">
+    delete from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status (id, group_id, job_id, 
+      service_id, env, status, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{env,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="env != null">
+        env,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null">
+        #{env,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultType="java.lang.Integer">
+    select count(*) from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update instance_resource_group_status
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null">
+        job_id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null">
+        env = #{record.env,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update instance_resource_group_status
+    set id = #{record.id,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=VARCHAR},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="env" jdbcType="INTEGER" property="env" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_id, job_id, service_id, env, status, message
+  </sql>
+  <select id="selectByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample">
+    delete from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status (id, group_id, job_id, 
+      service_id, env, status, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{env,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="env != null">
+        env,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null">
+        #{env,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultType="java.lang.Integer">
+    select count(*) from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update instance_resource_group_status
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null">
+        job_id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null">
+        env = #{record.env,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update instance_resource_group_status
+    set id = #{record.id,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=VARCHAR},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="env" jdbcType="INTEGER" property="env" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_id, job_id, service_id, env, status, message
+  </sql>
+  <select id="selectByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample">
+    delete from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status (id, group_id, job_id, 
+      service_id, env, status, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{env,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="env != null">
+        env,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null">
+        #{env,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultType="java.lang.Integer">
+    select count(*) from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update instance_resource_group_status
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null">
+        job_id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null">
+        env = #{record.env,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update instance_resource_group_status
+    set id = #{record.id,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=VARCHAR},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="env" jdbcType="INTEGER" property="env" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_id, job_id, service_id, env, status, message
+  </sql>
+  <select id="selectByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample">
+    delete from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status (id, group_id, job_id, 
+      service_id, env, status, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{env,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="env != null">
+        env,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null">
+        #{env,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultType="java.lang.Integer">
+    select count(*) from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update instance_resource_group_status
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null">
+        job_id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null">
+        env = #{record.env,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update instance_resource_group_status
+    set id = #{record.id,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=VARCHAR},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="env" jdbcType="INTEGER" property="env" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_id, job_id, service_id, env, status, message
+  </sql>
+  <select id="selectByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample">
+    delete from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status (id, group_id, job_id, 
+      service_id, env, status, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{env,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="env != null">
+        env,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null">
+        #{env,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultType="java.lang.Integer">
+    select count(*) from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update instance_resource_group_status
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null">
+        job_id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null">
+        env = #{record.env,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update instance_resource_group_status
+    set id = #{record.id,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=VARCHAR},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="env" jdbcType="INTEGER" property="env" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_id, job_id, service_id, env, status, message
+  </sql>
+  <select id="selectByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample">
+    delete from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status (id, group_id, job_id, 
+      service_id, env, status, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{env,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="env != null">
+        env,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null">
+        #{env,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultType="java.lang.Integer">
+    select count(*) from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update instance_resource_group_status
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null">
+        job_id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null">
+        env = #{record.env,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update instance_resource_group_status
+    set id = #{record.id,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=VARCHAR},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="env" jdbcType="INTEGER" property="env" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_id, job_id, service_id, env, status, message
+  </sql>
+  <select id="selectByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample">
+    delete from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status (id, group_id, job_id, 
+      service_id, env, status, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{env,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="env != null">
+        env,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null">
+        #{env,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultType="java.lang.Integer">
+    select count(*) from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update instance_resource_group_status
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null">
+        job_id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null">
+        env = #{record.env,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update instance_resource_group_status
+    set id = #{record.id,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=VARCHAR},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="env" jdbcType="INTEGER" property="env" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_id, job_id, service_id, env, status, message
+  </sql>
+  <select id="selectByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample">
+    delete from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status (id, group_id, job_id, 
+      service_id, env, status, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{env,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="env != null">
+        env,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null">
+        #{env,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultType="java.lang.Integer">
+    select count(*) from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update instance_resource_group_status
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null">
+        job_id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null">
+        env = #{record.env,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update instance_resource_group_status
+    set id = #{record.id,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=VARCHAR},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="env" jdbcType="INTEGER" property="env" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_id, job_id, service_id, env, status, message
+  </sql>
+  <select id="selectByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample">
+    delete from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status (id, group_id, job_id, 
+      service_id, env, status, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{env,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="env != null">
+        env,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null">
+        #{env,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultType="java.lang.Integer">
+    select count(*) from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update instance_resource_group_status
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null">
+        job_id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null">
+        env = #{record.env,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update instance_resource_group_status
+    set id = #{record.id,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=VARCHAR},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="env" jdbcType="INTEGER" property="env" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_id, job_id, service_id, env, status, message
+  </sql>
+  <select id="selectByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample">
+    delete from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status (id, group_id, job_id, 
+      service_id, env, status, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{env,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="env != null">
+        env,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null">
+        #{env,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultType="java.lang.Integer">
+    select count(*) from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update instance_resource_group_status
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null">
+        job_id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null">
+        env = #{record.env,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update instance_resource_group_status
+    set id = #{record.id,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=VARCHAR},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="env" jdbcType="INTEGER" property="env" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_id, job_id, service_id, env, status, message
+  </sql>
+  <select id="selectByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample">
+    delete from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status (id, group_id, job_id, 
+      service_id, env, status, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{env,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="env != null">
+        env,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null">
+        #{env,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultType="java.lang.Integer">
+    select count(*) from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update instance_resource_group_status
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null">
+        job_id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null">
+        env = #{record.env,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update instance_resource_group_status
+    set id = #{record.id,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=VARCHAR},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="env" jdbcType="INTEGER" property="env" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_id, job_id, service_id, env, status, message
+  </sql>
+  <select id="selectByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample">
+    delete from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status (id, group_id, job_id, 
+      service_id, env, status, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{env,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="env != null">
+        env,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null">
+        #{env,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultType="java.lang.Integer">
+    select count(*) from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update instance_resource_group_status
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null">
+        job_id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null">
+        env = #{record.env,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update instance_resource_group_status
+    set id = #{record.id,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=VARCHAR},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="env" jdbcType="INTEGER" property="env" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_id, job_id, service_id, env, status, message
+  </sql>
+  <select id="selectByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample">
+    delete from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status (id, group_id, job_id, 
+      service_id, env, status, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{env,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="env != null">
+        env,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null">
+        #{env,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultType="java.lang.Integer">
+    select count(*) from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update instance_resource_group_status
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null">
+        job_id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null">
+        env = #{record.env,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update instance_resource_group_status
+    set id = #{record.id,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=VARCHAR},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="env" jdbcType="INTEGER" property="env" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_id, job_id, service_id, env, status, message
+  </sql>
+  <select id="selectByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample">
+    delete from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status (id, group_id, job_id, 
+      service_id, env, status, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{env,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="env != null">
+        env,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null">
+        #{env,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultType="java.lang.Integer">
+    select count(*) from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update instance_resource_group_status
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null">
+        job_id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null">
+        env = #{record.env,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update instance_resource_group_status
+    set id = #{record.id,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=VARCHAR},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="env" jdbcType="INTEGER" property="env" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_id, job_id, service_id, env, status, message
+  </sql>
+  <select id="selectByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample">
+    delete from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status (id, group_id, job_id, 
+      service_id, env, status, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{env,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="env != null">
+        env,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null">
+        #{env,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultType="java.lang.Integer">
+    select count(*) from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update instance_resource_group_status
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null">
+        job_id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null">
+        env = #{record.env,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update instance_resource_group_status
+    set id = #{record.id,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=VARCHAR},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <resultMap id="BaseResultMap" type="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="env" jdbcType="INTEGER" property="env" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, group_id, job_id, service_id, env, status, message
+  </sql>
+  <select id="selectByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample">
+    delete from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status (id, group_id, job_id, 
+      service_id, env, status, 
+      message)
+    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=INTEGER}, #{jobId,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{env,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatus">
+    insert into instance_resource_group_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="env != null">
+        env,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="env != null">
+        #{env,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mhc.mybatis2.model.InstanceResourceGroupStatusExample" resultType="java.lang.Integer">
+    select count(*) from instance_resource_group_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update instance_resource_group_status
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null">
+        job_id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceId != null">
+        service_id = #{record.serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.env != null">
+        env = #{record.env,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null">
+        message = #{record.message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update instance_resource_group_status
+    set id = #{record.id,jdbcType=INTEGER},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=VARCHAR},
+      service_id = #{record.serviceId,jdbcType=VARCHAR},
+      env = #{record.env,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

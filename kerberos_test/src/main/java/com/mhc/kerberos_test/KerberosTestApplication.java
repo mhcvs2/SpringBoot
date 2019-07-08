@@ -57,7 +57,6 @@ public class KerberosTestApplication implements CommandLineRunner {
         }
     }
 
-
     @Override
     public void run(String... args) throws Exception {
         Configuration conf = new Configuration();
