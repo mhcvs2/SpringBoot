@@ -14,7 +14,7 @@ public class TestController {
 
     @GetMapping("/t1/{id}")
     public User getUser(@PathVariable Integer id){
-        return userService.getUser(id);
+        return userService.getUser2(id);
     }
 
     @PostMapping("/t1")

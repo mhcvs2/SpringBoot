@@ -48,6 +48,12 @@ public class RedissonDistributedLocker implements DistributedLocker<RLock> {
     }
 
     @Override
+    public boolean tryLock(String lockKey) {
+        RLock lock = redissonClient.getLock(lockKey);
+        return lock.tryLock();
+    }
+
+    @Override
     public void unlock(RLock lock) {
         lock.unlock();
     }

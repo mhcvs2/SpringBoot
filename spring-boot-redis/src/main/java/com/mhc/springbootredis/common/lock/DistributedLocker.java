@@ -17,4 +17,6 @@ public interface DistributedLocker<T extends Lock> {
 
     void unlock(T lock);
 
+    boolean tryLock(String lockKey);
+
 }

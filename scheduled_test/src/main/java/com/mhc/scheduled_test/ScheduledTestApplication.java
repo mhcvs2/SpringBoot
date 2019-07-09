@@ -15,10 +15,11 @@ public class ScheduledTestApplication {
         SpringApplication.run(ScheduledTestApplication.class, args);
     }
 
-//    @Scheduled(cron = "0/5 * * * * ?")
-//    public void t1(){
-//        System.out.println("t1================");
-//        System.out.println(LocalDateTime.now().toLocalTime());
-//    }
+    @Scheduled(cron = "0/5 * * * * ?")
+    public void t1(){
+        System.out.println("t1================");
+        System.out.println(LocalDateTime.now().toLocalTime());
+        System.out.println(Thread.currentThread().getId());
+    }
 
 }

@@ -75,4 +75,13 @@ public class Test {
         System.out.println("end");
     }
 
+    @GetMapping("/6")
+    public boolean t6() {
+        String key = "a:b:c:6";
+        for (int i = 0; i < 5; i++) {
+            System.out.println(DistributedLockerUtil.tryLock(key));
+        }
+        return false;
+    }
+
 }

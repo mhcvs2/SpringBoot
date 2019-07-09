@@ -1,4 +1,6 @@
 
+
+
 spring:
   redis:
     database: 0
@@ -13,4 +15,6 @@ redisson:
 
 #  redisson.master-name=mymaster
 #  redisson.password=xxxx
+server:
+  port: 8080
 #  redisson.sentinel-addresses=10.47.91.83:26379,10.47.91.83:26380,10.47.91.83:26381

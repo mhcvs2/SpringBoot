@@ -83,4 +83,8 @@ public class DistributedLockerUtil {
         return distributedLocker.tryLock(lockKey, unit, waitTime, leaseTime);
     }
 
+    public static boolean tryLock(String lockKey) {
+        return distributedLocker.tryLock(lockKey);
+    }
+
 }
