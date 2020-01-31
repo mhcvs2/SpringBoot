@@ -1,0 +1,9 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:3033/eureka/
+server:
+  port: 3034
+spring:
+  application:
+    name: provider

@@ -1,0 +1,16 @@
+server:
+  port: 3035
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:3033/eureka/
