@@ -10,6 +10,17 @@ spring:
         locator:
           enabled: true
           lowerCaseServiceId: true
+      routes:
+        - id: t1
+          uri: lb://provider
+          predicates:
+            - Path=/t1/hello/**
+          filters:
+            - StripPrefix=1
+            - AddRequestHeader=extendtag, 1111111
+            - haha
+            - IPForbid=127.0.0.1
+            - Test=aa,bb
 eureka:
   client:
     service-url:
