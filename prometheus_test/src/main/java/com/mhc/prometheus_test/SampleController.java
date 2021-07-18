@@ -13,7 +13,7 @@ public class SampleController {
 
     private static Random random = new Random();
 
-    private static final Counter requestTotal = Counter.build() .name("my_sample_counter") .labelNames("status") .help("A simple Counter to illustrate custom Counters in Spring Boot and Prometheus").register();
+    private static final Counter requestTotal = Counter.build().name("my_sample_counter") .labelNames("status") .help("A simple Counter to illustrate custom Counters in Spring Boot and Prometheus").register();
 
     private static final Gauge inprogressRequests = Gauge.build()
             .name("inprogress_requests").help("test")
@@ -33,7 +33,9 @@ public class SampleController {
     @Scheduled(fixedRate=5000)
     public void gatherResource(){
         System.out.println("gatherResource=========");
-        inprogressRequests.labels("shanghai", "mhc", "kdc", "group1").set(random.nextDouble());
+//        inprogressRequests.labels("shanghai", "mhc", "kdc", "group1").set(random.nextDouble());
+        inprogressRequests.labels("shanghai", "mhc", "kdc", "group1").set(0);
+        inprogressRequests.labels("shanghai", "mhc", "kdc", "group1").inc();
     }
 
 
